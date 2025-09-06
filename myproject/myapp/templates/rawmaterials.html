@@ -1,0 +1,221 @@
+<html>
+    <head>
+        <title>Raw Materials</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                color: #333;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                margin-top: 0%;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 500;
+                color: #34495e;
+                margin-top: 20px;
+            }
+
+            .container {
+                display: flex;
+                justify-content: space-around;
+                align-items: stretch;
+                width: 80%;
+                max-width: 1000px;
+                margin-top: 20px;
+                gap: 40px;
+            }
+
+            form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 350px; 
+            }
+
+            label {
+                font-weight: 600;
+                display: block;
+                margin-top: 10px;
+                color: #444;
+            }
+
+            input[type="number"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                box-sizing: border-box;
+                font-size: 1rem;
+                text-align: center;
+                transition: border-color 0.3s ease;
+            }
+
+            input[type="number"]:focus {
+                border-color: #3498db;
+                outline: none;
+            }
+
+            input[readonly] {
+                background-color: #e9ecef;
+                color: #495057;
+                cursor: not-allowed;
+            }
+
+            input[type="submit"] {
+                background-color: #3498db;
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 500;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                width: 100%;
+                max-width: 200px;
+                margin-top: 10px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #2980b9;
+                transform: translateY(-2px);
+            }
+
+            p {
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: #2c3e50;
+                margin-top: 20px;
+            }
+
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 500;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                width: 100%;
+                max-width: 200px;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #45a049;
+                transform: translateY(-2px);
+            }
+
+            button:active {
+                transform: translateY(0);
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #444;
+    flex: 1; 
+    text-align: left; 
+}
+
+.form-group input {
+    flex: 2; 
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: center;
+}
+
+        </style>
+    </head>
+    <body>
+        <h1>Raw Materials</h1>
+
+        <div class="container">
+
+<form method="post" action="{% url 'add_raw_materials' %}" class="add-raw-materials">
+    <h2>Add Raw Materials</h2>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="add_cap">Cap</label>
+        <input type="number" id="add_cap" name="add_cap" value="0">
+    </div>
+    <div class="form-group">
+        <label for="add_powder">Powder</label>
+        <input type="number" id="add_powder" name="add_powder" value="0">
+    </div>
+    <div class="form-group">
+        <label for="add_container400">Container 400g</label>
+        <input type="number" id="add_container400" name="add_container400" value="0">
+    </div>
+    <div class="form-group">
+        <label for="add_container500">Container 500g</label>
+        <input type="number" id="add_container500" name="add_container500" value="0">
+    </div>
+    <input type="submit" id="submit" value="Add Raw Materials">
+</form>
+
+<form method="post">
+    <h2>Available Raw Materials</h2>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="cap">Cap</label>
+        <input type="number" id="cap" name="cap" value="{{ rawmaterials.cap }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="powder">Powder</label>
+        <input type="number" id="powder" name="powder" value="{{ rawmaterials.powder }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="container400">Container 400g</label>
+        <input type="number" id="container400" name="container400" value="{{ rawmaterials.container400 }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="container500">Container 500g</label>
+        <input type="number" id="container500" name="container500" value="{{ rawmaterials.container500 }}" readonly>
+    </div>
+
+</form>
+
+        </div>
+
+        <a href="{% url 'inventory' %}"><button>Back to Inventory</button></a>
+    </body>
+</html>

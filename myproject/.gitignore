@@ -1,0 +1,19 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtual environment
+myvenv/
+
+# SQLite database (don’t upload local DB)
+db.sqlite3
+
+# Django stuff
+/staticfiles/
+/media/
+
+# Environment variables
+.env
+
+# VSCode settings
+.vscode/

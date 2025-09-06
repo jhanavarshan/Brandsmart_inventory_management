@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-left: 5px;
+            margin-top: 0%;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px; 
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .button-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .blue-button {
+            background-color: #3498db;
+        }
+
+        .blue-button:hover {
+            background-color: #2980b9;
+        }
+
+        .green-button {
+            background-color: #2ecc71;
+        }
+
+        .green-button:hover {
+            background-color: #27ae60;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventory</h1>
+    <div class="button-column">
+        <div class="button-row">
+            <a href="{% url 'products' %}"><button class="blue-button">Products</button></a>
+            <a href="{% url 'rawmaterials' %}"><button class="blue-button">Raw Materials</button></a>
+        </div>
+        <a href="{% url 'dovegel' %}"><button class="green-button">Back to Dovegel</button></a>
+    </div>
+</body>
+</html>
